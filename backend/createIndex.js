@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const uri = process.env.MONGODB_URI; // from your .env file
-const dbName = "beatawareDB";        // replace with your database name
-const collectionName = "songs";      // replace with the collection where you created the search index
+const dbName = "beataware";        // replace with your database name
+const collectionName = "health";      // replace with the collection where you created the search index
 
 async function checkIndex() {
   const client = new MongoClient(uri);

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ADMIN/Desktop/BeatAware/beataware/src/components/Header.tsx"],"sourcesContent":["// components/Header.tsx\r\n'use client';\r\nimport Link from 'next/link';\r\nexport default function Header(){\r\n  return (\r\n    <header className=\"w-full py-4 bg-white/60 backdrop-blur-sm shadow-sm\">\r\n      <div className=\"container mx-auto px-6 flex items-center justify-between\">\r\n        <Link href=\"/\" className=\"text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue-500 to-brand-purple-500\">\r\n          BeatAware\r\n        </Link>\r\n        <nav className=\"space-x-4\">\r\n          <Link href=\"#features\" className=\"text-sm\">Features</Link>\r\n          <Link href=\"#contact\" className=\"text-sm\">Contact</Link>\r\n        </nav>\r\n      </div>\r\n    </header>\r\n  );\r\n}\r\n"],"names":[],"mappings":"AAAA,wBAAwB;;;;;;AAExB;AADA;;;AAEe,SAAS;IACtB,qBACE,mRAAC;QAAO,WAAU;kBAChB,cAAA,mRAAC;YAAI,WAAU;;8BACb,mRAAC,4MAAI;oBAAC,MAAK;oBAAI,WAAU;8BAA2G;;;;;;8BAGpI,mRAAC;oBAAI,WAAU;;sCACb,mRAAC,4MAAI;4BAAC,MAAK;4BAAY,WAAU;sCAAU;;;;;;sCAC3C,mRAAC,4MAAI;4BAAC,MAAK;4BAAW,WAAU;sCAAU;;;;;;;;;;;;;;;;;;;;;;;AAKpD","debugId":null}}]
+}

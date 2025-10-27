@@ -1,0 +1,104 @@
+/* [project]/Desktop/BeatAware/beataware/src/styles/globals.css [app-client] (css) */
+:root {
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+  --light: #f9fafb;
+  --dark: #111827;
+  --gray: #6b7280;
+  --font-primary: "Arial", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--dark);
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.card {
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
+}
+
+.dots {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+}
+
+.dot {
+  background: #e5e7eb;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0 4px;
+}
+
+.dot.active {
+  background: var(--primary);
+}
+
+.btn {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: .9rem;
+  font-weight: 600;
+  transition: opacity .3s;
+  display: flex;
+}
+
+.btn:hover {
+  opacity: .9;
+}
+
+.skip {
+  color: var(--gray);
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+.branding {
+  text-align: center;
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.branding svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+  margin-bottom: .3rem;
+}
+
+.branding p {
+  color: var(--dark);
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=Desktop_BeatAware_beataware_src_styles_globals_39fc6c0a.css.map*/

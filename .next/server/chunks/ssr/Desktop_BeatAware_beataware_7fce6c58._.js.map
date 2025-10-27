@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ADMIN/Desktop/BeatAware/beataware/src/app/dashboard/history/page.tsx"],"sourcesContent":["\"use client\";\r\n\r\nexport default function HistoryPage() {\r\n  return (\r\n    <div className=\"min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 p-6\">\r\n      <h1 className=\"text-2xl font-bold text-white mb-4\">History</h1>\r\n      <p className=\"text-white\">Your past appointments, vitals, and other history will appear here.</p>\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;;AAEe,SAAS;IACtB,qBACE,mRAAC;QAAI,WAAU;;0BACb,mRAAC;gBAAG,WAAU;0BAAqC;;;;;;0BACnD,mRAAC;gBAAE,WAAU;0BAAa;;;;;;;;;;;;AAGhC","debugId":null}},
+    {"offset": {"line": 42, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/ADMIN/Desktop/BeatAware/beataware/node_modules/next/src/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = (\n  require('../../module.compiled') as typeof import('../../module.compiled')\n).vendored['react-ssr']!.ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":"AAAAA,OAAOC,OAAO,GACZC,QAAQ,wJACRC,QAAQ,CAAC,YAAY,CAAEC,kBAAkB","ignoreList":[0],"debugId":null}}]
+}

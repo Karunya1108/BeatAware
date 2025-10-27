@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { auth } from "../firebase"; // ensure this path is correct for your project
+import { auth } from "../firebase"; // ✅ adjust if firebase.js is in another folder
+import { onAuthStateChanged } from "firebase/auth";
 
 type UserProfile = {
+  uid?: string;
   firstName: string;
   lastName: string;
   dob: string;
@@ -20,8 +22,8 @@ type UserProfile = {
 
 export default function UserDetails() {
   const router = useRouter();
-
   const [user, setUser] = useState<UserProfile>({
+    uid: "",
     firstName: "",
     lastName: "",
     dob: "",
@@ -40,26 +42,30 @@ export default function UserDetails() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
 
-  // Use env var if provided (set NEXT_PUBLIC_API_BASE in .env.local for Next.js)
-  // Example: NEXT_PUBLIC_API_BASE=http://127.0.0.1:5000
+  // ✅ use .env.local variable if available, else default localhost:5000
   const API_BASE =
     (process.env.NEXT_PUBLIC_API_BASE as string) || "http://127.0.0.1:5000";
 
+  // ✅ detect Firebase user
   useEffect(() => {
-    // Ensure user is signed in and prefill email
-    const unsubscribe = auth.onAuthStateChanged((current) => {
-      if (!current) {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
         router.push("/login");
         setCheckingAuth(false);
         return;
       }
-      setUser((prev) => ({ ...prev, email: current.email || "" }));
+      setUser((prev) => ({
+        ...prev,
+        uid: currentUser.uid,
+        email: currentUser.email || "",
+      }));
       setCheckingAuth(false);
     });
 
     return () => unsubscribe();
   }, [router]);
 
+  // ✅ handle input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -67,8 +73,8 @@ export default function UserDetails() {
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ parse text safely
   const parseResponseTextSafely = async (res: Response) => {
-    // Read response as text first, then attempt JSON parse; fallback to text
     const text = await res.text().catch(() => "");
     if (!text) return null;
     try {
@@ -78,6 +84,7 @@ export default function UserDetails() {
     }
   };
 
+  // ✅ main form submit
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (checkingAuth) return;
@@ -86,66 +93,42 @@ export default function UserDetails() {
     setLoading(true);
 
     try {
-      const currentUser = auth.currentUser;
-      if (!currentUser) {
-        setErrorMsg("Not authenticated. Please log in.");
+      if (!user.uid) {
+        setErrorMsg("UID is required — please ensure you're logged in.");
         setLoading(false);
         return;
       }
 
-      // Try to get ID token (server may validate it)
-      let token: string | null = null;
-      try {
-        token = await currentUser.getIdToken();
-      } catch (tErr) {
-        console.warn("Could not get ID token (continuing):", tErr);
-      }
+      const token = await auth.currentUser?.getIdToken();
 
-      // UPDATED fetch target -> /api/save-user
-      const url = `${API_BASE}/api/save-user`;
-      console.log("POST ->", url);
-      console.log("Payload:", user);
-
-      const res = await fetch(url, {
+      const res = await fetch(`${API_BASE}/api/save-user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
-        // If your backend expects cookies, uncomment credentials below and configure CORS
-        // credentials: "include",
         body: JSON.stringify(user),
       });
 
       const parsed = await parseResponseTextSafely(res);
-      console.log("Response status:", res.status, "body:", parsed);
-
       if (!res.ok) {
-        // Build human-friendly message (prefer server-provided message)
-        let message = `Server returned status ${res.status}`;
-        if (parsed) {
-          if (typeof parsed === "string") message = parsed;
-          else if ((parsed as any).message) message = (parsed as any).message;
-          else if ((parsed as any).error) message = (parsed as any).error;
-          else message = JSON.stringify(parsed).slice(0, 500);
-        }
-        setErrorMsg(message);
+        const msg =
+          typeof parsed === "string"
+            ? parsed
+            : parsed?.error || parsed?.message || "Error saving user";
+        setErrorMsg(msg);
         setLoading(false);
         return;
       }
 
-      // success
-      setSuccessMsg("Profile saved — redirecting to dashboard...");
-      // optional: log success payload
-      console.log("Saved profile response:", parsed);
-      setTimeout(() => router.push("/dashboard"), 700);
+      setSuccessMsg("Profile saved successfully! Redirecting...");
+      console.log("✅ Saved:", parsed);
+      setTimeout(() => router.push("/dashboard"), 1200);
     } catch (err: any) {
-      console.error("handleSave unexpected error:", err);
-      const msg =
-        err instanceof TypeError && err.message === "Failed to fetch"
-          ? "Network error: cannot reach backend. Check server & CORS."
-          : err?.message || "Unknown error saving profile";
-      setErrorMsg(msg);
+      console.error(err);
+      setErrorMsg(
+        "Network error — check if backend is running on port 5000 and CORS is allowed."
+      );
     } finally {
       setLoading(false);
     }
@@ -153,8 +136,8 @@ export default function UserDetails() {
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Checking authentication...</p>
+      <div className="min-h-screen flex items-center justify-center text-lg text-gray-800">
+        Checking authentication...
       </div>
     );
   }
@@ -169,10 +152,13 @@ export default function UserDetails() {
           Enter your details to personalize your experience
         </p>
 
-        {/* Inline messages */}
+        {/* Error + Success Messages */}
         {errorMsg && (
           <div className="mb-4 rounded-md bg-red-50 border border-red-200 text-red-800 px-4 py-2 text-sm">
             {errorMsg}
+            <div className="mt-2 text-xs text-gray-600">
+              Tips: make sure <code>API_BASE</code> matches your backend port and CORS origin.
+            </div>
           </div>
         )}
         {successMsg && (
@@ -182,104 +168,41 @@ export default function UserDetails() {
         )}
 
         <form onSubmit={handleSave} className="space-y-5">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={user.firstName}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={user.lastName}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="date"
-            name="dob"
-            value={user.dob}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="number"
-            name="age"
-            placeholder="Age"
-            value={user.age}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={user.email}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={user.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={user.city}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={user.address}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="tel"
-            name="emergencyContact"
-            placeholder="Emergency Contact"
-            value={user.emergencyContact}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
-
-          <input
-            type="text"
-            name="bloodGroup"
-            placeholder="Blood Group (e.g., O+, A-)"
-            value={user.bloodGroup}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
-            required
-          />
+          {[
+            "firstName",
+            "lastName",
+            "dob",
+            "age",
+            "email",
+            "phone",
+            "city",
+            "address",
+            "emergencyContact",
+            "bloodGroup",
+          ].map((field) => (
+            <input
+              key={field}
+              type={
+                field === "dob"
+                  ? "date"
+                  : field === "email"
+                  ? "email"
+                  : field === "age" || field === "phone"
+                  ? "number"
+                  : "text"
+              }
+              name={field}
+              placeholder={
+                field === "bloodGroup"
+                  ? "Blood Group (e.g., O+, A-)"
+                  : field.charAt(0).toUpperCase() + field.slice(1)
+              }
+              value={(user as any)[field]}
+              onChange={handleChange}
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium"
+              required
+            />
+          ))}
 
           <textarea
             name="medicalHistory"

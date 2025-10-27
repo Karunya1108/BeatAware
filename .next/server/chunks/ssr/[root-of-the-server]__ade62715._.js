@@ -92,6 +92,7 @@ module.exports = mod;
 "[project]/Desktop/BeatAware/beataware/src/app/firebase.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// frontend/firebase.js
 __turbopack_context__.s([
     "auth",
     ()=>auth,
@@ -122,6 +123,7 @@ const firebaseConfig = {
     messagingSenderId: ("TURBOPACK compile-time value", "922163382363"),
     appId: ("TURBOPACK compile-time value", "1:922163382363:web:a923fffe7574a25641177e")
 };
+// initialize firebase app (prevent double initialization during hot reload)
 const app = !(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f40$firebase$2f$app$2f$dist$2f$esm$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getApps"])().length ? (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f40$firebase$2f$app$2f$dist$2f$esm$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["initializeApp"])(firebaseConfig) : (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f40$firebase$2f$app$2f$dist$2f$esm$2f$index$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getApps"])()[0];
 const auth = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$firebase$2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getAuth"])(app);
 const db = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getFirestore"])(app);
@@ -138,8 +140,11 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/node_modules/next/navigation.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/src/app/firebase.js [app-ssr] (ecmascript)"); // ensure this path is correct for your project
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/src/app/firebase.js [app-ssr] (ecmascript)"); // ✅ adjust if firebase.js is in another folder
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$firebase$2f$auth$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/node_modules/firebase/auth/dist/index.mjs [app-ssr] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$firebase$2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/BeatAware/beataware/node_modules/firebase/node_modules/@firebase/auth/dist/node-esm/index.js [app-ssr] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -147,6 +152,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beat
 function UserDetails() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
+        uid: "",
         firstName: "",
         lastName: "",
         dob: "",
@@ -163,20 +169,20 @@ function UserDetails() {
     const [checkingAuth, setCheckingAuth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [errorMsg, setErrorMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [successMsg, setSuccessMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    // Use env var if provided (set NEXT_PUBLIC_API_BASE in .env.local for Next.js)
-    // Example: NEXT_PUBLIC_API_BASE=http://127.0.0.1:5000
+    // ✅ use .env.local variable if available, else default localhost:5000
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://127.0.0.1:5000";
+    // ✅ detect Firebase user
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        // Ensure user is signed in and prefill email
-        const unsubscribe = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"].onAuthStateChanged((current)=>{
-            if (!current) {
+        const unsubscribe = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$firebase$2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["onAuthStateChanged"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], (currentUser)=>{
+            if (!currentUser) {
                 router.push("/login");
                 setCheckingAuth(false);
                 return;
             }
             setUser((prev)=>({
                     ...prev,
-                    email: current.email || ""
+                    uid: currentUser.uid,
+                    email: currentUser.email || ""
                 }));
             setCheckingAuth(false);
         });
@@ -184,6 +190,7 @@ function UserDetails() {
     }, [
         router
     ]);
+    // ✅ handle input changes
     const handleChange = (e)=>{
         const { name, value } = e.target;
         setUser((prev)=>({
@@ -191,8 +198,8 @@ function UserDetails() {
                 [name]: value
             }));
     };
+    // ✅ parse text safely
     const parseResponseTextSafely = async (res)=>{
-        // Read response as text first, then attempt JSON parse; fallback to text
         const text = await res.text().catch(()=>"");
         if (!text) return null;
         try {
@@ -201,6 +208,7 @@ function UserDetails() {
             return text;
         }
     };
+    // ✅ main form submit
     const handleSave = async (e)=>{
         e.preventDefault();
         if (checkingAuth) return;
@@ -208,22 +216,13 @@ function UserDetails() {
         setSuccessMsg(null);
         setLoading(true);
         try {
-            const currentUser = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"].currentUser;
-            if (!currentUser) {
-                setErrorMsg("Not authenticated. Please log in.");
+            if (!user.uid) {
+                setErrorMsg("UID is required — please ensure you're logged in.");
+                setLoading(false);
                 return;
             }
-            // Try to get ID token (server may validate it)
-            let token = null;
-            try {
-                token = await currentUser.getIdToken();
-            } catch (tErr) {
-                console.warn("Could not get ID token (continuing):", tErr);
-            }
-            const url = `${API_BASE}/api/users`;
-            console.log("POST ->", url);
-            console.log("Payload:", user);
-            const res = await fetch(url, {
+            const token = await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$src$2f$app$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"].currentUser?.getIdToken();
+            const res = await fetch(`${API_BASE}/api/save-user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -231,50 +230,32 @@ function UserDetails() {
                         Authorization: `Bearer ${token}`
                     } : {}
                 },
-                // If your backend expects cookies, uncomment credentials below and configure CORS
-                // credentials: "include",
                 body: JSON.stringify(user)
             });
             const parsed = await parseResponseTextSafely(res);
-            console.log("Response status:", res.status, "body:", parsed);
             if (!res.ok) {
-                // Build human-friendly message (prefer server-provided message)
-                let message = `Server returned status ${res.status}`;
-                if (parsed) {
-                    if (typeof parsed === "string") message = parsed;
-                    else if (parsed.message) message = parsed.message;
-                    else if (parsed.error) message = parsed.error;
-                    else message = JSON.stringify(parsed).slice(0, 500);
-                }
-                setErrorMsg(message);
+                const msg = typeof parsed === "string" ? parsed : parsed?.error || parsed?.message || "Error saving user";
+                setErrorMsg(msg);
+                setLoading(false);
                 return;
             }
-            // success
-            setSuccessMsg("Profile saved — redirecting to dashboard...");
-            // optional: log success payload
-            console.log("Saved profile response:", parsed);
-            setTimeout(()=>router.push("/dashboard"), 700);
+            setSuccessMsg("Profile saved successfully! Redirecting...");
+            console.log("✅ Saved:", parsed);
+            setTimeout(()=>router.push("/dashboard"), 1200);
         } catch (err) {
-            console.error("handleSave unexpected error:", err);
-            const msg = err instanceof TypeError && err.message === "Failed to fetch" ? "Network error: cannot reach backend. Check server & CORS." : err?.message || "Unknown error saving profile";
-            setErrorMsg(msg);
+            console.error(err);
+            setErrorMsg("Network error — check if backend is running on port 5000 and CORS is allowed.");
         } finally{
             setLoading(false);
         }
     };
     if (checkingAuth) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen flex items-center justify-center",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                children: "Checking authentication..."
-            }, void 0, false, {
-                fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                lineNumber: 154,
-                columnNumber: 9
-            }, this)
+            className: "min-h-screen flex items-center justify-center text-lg text-gray-800",
+            children: "Checking authentication..."
         }, void 0, false, {
             fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-            lineNumber: 153,
+            lineNumber: 139,
             columnNumber: 7
         }, this);
     }
@@ -288,7 +269,7 @@ function UserDetails() {
                     children: "Let’s Get to Know You"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                    lineNumber: 162,
+                    lineNumber: 148,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -296,15 +277,35 @@ function UserDetails() {
                     children: "Enter your details to personalize your experience"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                    lineNumber: 165,
+                    lineNumber: 151,
                     columnNumber: 9
                 }, this),
                 errorMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "mb-4 rounded-md bg-red-50 border border-red-200 text-red-800 px-4 py-2 text-sm",
-                    children: errorMsg
-                }, void 0, false, {
+                    children: [
+                        errorMsg,
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "mt-2 text-xs text-gray-600",
+                            children: [
+                                "Tips: make sure ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("code", {
+                                    children: "API_BASE"
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
+                                    lineNumber: 160,
+                                    columnNumber: 31
+                                }, this),
+                                " matches your backend port and CORS origin."
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
+                            lineNumber: 159,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                    lineNumber: 171,
+                    lineNumber: 157,
                     columnNumber: 11
                 }, this),
                 successMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -312,142 +313,37 @@ function UserDetails() {
                     children: successMsg
                 }, void 0, false, {
                     fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                    lineNumber: 176,
+                    lineNumber: 165,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                     onSubmit: handleSave,
                     className: "space-y-5",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            name: "firstName",
-                            placeholder: "First Name",
-                            value: user.firstName,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 182,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            name: "lastName",
-                            placeholder: "Last Name",
-                            value: user.lastName,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 192,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "date",
-                            name: "dob",
-                            value: user.dob,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 202,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "number",
-                            name: "age",
-                            placeholder: "Age",
-                            value: user.age,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 211,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "email",
-                            name: "email",
-                            placeholder: "Email",
-                            value: user.email,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 221,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "tel",
-                            name: "phone",
-                            placeholder: "Phone Number",
-                            value: user.phone,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 231,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            name: "city",
-                            placeholder: "City",
-                            value: user.city,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 241,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            name: "address",
-                            placeholder: "Address",
-                            value: user.address,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 251,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "tel",
-                            name: "emergencyContact",
-                            placeholder: "Emergency Contact",
-                            value: user.emergencyContact,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 261,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            name: "bloodGroup",
-                            placeholder: "Blood Group (e.g., O+, A-)",
-                            value: user.bloodGroup,
-                            onChange: handleChange,
-                            className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
-                            required: true
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 271,
-                            columnNumber: 11
-                        }, this),
+                        [
+                            "firstName",
+                            "lastName",
+                            "dob",
+                            "age",
+                            "email",
+                            "phone",
+                            "city",
+                            "address",
+                            "emergencyContact",
+                            "bloodGroup"
+                        ].map((field)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: field === "dob" ? "date" : field === "email" ? "email" : field === "age" || field === "phone" ? "number" : "text",
+                                name: field,
+                                placeholder: field === "bloodGroup" ? "Blood Group (e.g., O+, A-)" : field.charAt(0).toUpperCase() + field.slice(1),
+                                value: user[field],
+                                onChange: handleChange,
+                                className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium",
+                                required: true
+                            }, field, false, {
+                                fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
+                                lineNumber: 183,
+                                columnNumber: 13
+                            }, this)),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                             name: "medicalHistory",
                             placeholder: "Medical History",
@@ -457,7 +353,7 @@ function UserDetails() {
                             className: "w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 font-medium resize-none"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 281,
+                            lineNumber: 207,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$BeatAware$2f$beataware$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -467,24 +363,24 @@ function UserDetails() {
                             children: loading ? "Saving..." : "Save & Continue"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                            lineNumber: 290,
+                            lineNumber: 216,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-                    lineNumber: 181,
+                    lineNumber: 170,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-            lineNumber: 161,
+            lineNumber: 147,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/BeatAware/beataware/src/app/user-details/page.tsx",
-        lineNumber: 160,
+        lineNumber: 146,
         columnNumber: 5
     }, this);
 }

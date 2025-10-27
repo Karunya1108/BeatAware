@@ -11,33 +11,19 @@ dotenv.config();
 
 const app = express();
 
-// ---------- Simple, robust CORS (dev) ----------
-const FRONTEND_ORIGINS = [
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "http://localhost:3001",
-];
-
+// ---------- CORS (simple local dev setup) ----------
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow requests with no origin (Postman, curl, mobile apps, etc.)
-      if (!origin) return callback(null, true);
-      if (FRONTEND_ORIGINS.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("CORS policy: This origin is not allowed"), false);
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: ["http://localhost:3000"], // your frontend URL
+    methods: ["GET", "POST"],
     credentials: true,
   })
 );
 
-// handle preflight for all routes
+// Handle preflight for all routes
 app.options("*", cors());
 
-// parse JSON body
+// Parse JSON body
 app.use(express.json());
 
 // ---------- Firebase Admin Initialization ----------
@@ -67,7 +53,7 @@ if (!MONGODB_URI) {
 
 let db;
 const DB_NAME = process.env.MONGODB_DB || "beataware";
-const client = new MongoClient(MONGODB_URI); // no deprecated options
+const client = new MongoClient(MONGODB_URI);
 
 async function connectMongo() {
   try {
@@ -76,20 +62,16 @@ async function connectMongo() {
     db = client.db(DB_NAME);
     console.log("✅ Connected to MongoDB:", db.databaseName);
 
-    // Ensure index (non-fatal)
-    try {
-      await db.collection("users").createIndex({ uid: 1 }, { unique: true });
-      console.log("✅ Created/ensured index on users.uid");
-    } catch (indexErr) {
-      console.warn("⚠️ Could not create index on users.uid:", indexErr.message || indexErr);
-    }
+    // Mount route AFTER DB is ready
+    const saveUserRoute = require("./routes/saveUser.cjs")(db);
+    app.use("/api/save-user", saveUserRoute);
+    console.log("✅ Mounted /api/save-user");
   } catch (err) {
     console.error("❌ MongoDB connection error:", err);
-    // exit because DB is required
     process.exit(1);
   }
 }
-connectMongo(); // start connection attempt
+connectMongo();
 
 // ---------- Health route ----------
 app.get("/health", async (req, res) => {
